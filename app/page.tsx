@@ -16,8 +16,7 @@ const lanes = [
   { label: "Books", href: "/books" },
   { label: "Films", href: "/films" },
   { label: "Workshops", href: "/workshops" },
-  { label: "Business", href: "/business" },
-  { label: "Booking", href: "/booking" },
+    { label: "Booking", href: "/booking" },
   { label: "Contact", href: "/contact" },
 ];
 

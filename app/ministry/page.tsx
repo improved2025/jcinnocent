@@ -162,7 +162,7 @@ export default function MinistryPage() {
               <div className="text-[11px] tracking-[0.28em] text-white/50">AUDIO MESSAGES</div>
               <h2 className="mt-4 text-2xl font-semibold">Listen and build your faith.</h2>
               <p className="mt-3 max-w-2xl text-sm text-white/70">
-                Click play to listen. These audio files are served from{" "}
+                Click play to listen. 
                 <span className="text-white/80">/public/audio/</span>.
               </p>
             </div>
@@ -183,7 +183,7 @@ export default function MinistryPage() {
                 key={m.title}
                 className="rounded-3xl border border-white/10 bg-neutral-950/40 p-7"
               >
-                <div className="text-sm font-medium">{m.title}</div>
+                <div className="text-sm font-semibold text-amber-200 tracking-wide">{m.title}</div>
 
                 <audio controls preload="none" className="mt-4 w-full">
                   <source src={m.src} type="audio/mpeg" />
