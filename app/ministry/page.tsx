@@ -49,6 +49,15 @@ export default function MinistryPage() {
 
           <div className="flex items-center gap-3">
             <a
+              href="https://www.ggichurch.org"
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 hover:border-white/25 hover:text-white transition"
+            >
+              Visit GGI Church
+            </a>
+
+            <a
               href="https://www.youtube.com/@jefinno"
               target="_blank"
               rel="noreferrer"
@@ -80,6 +89,20 @@ export default function MinistryPage() {
               Ministry that builds faith
               <span className="block text-white/65">and strengthens purpose.</span>
             </h1>
+
+            {/* Added: Senior Pastor line + church link */}
+            <p className="mt-3 text-sm text-amber-200/80">
+              Senior Pastor,{" "}
+              <a
+                href="https://www.ggichurch.org"
+                target="_blank"
+                rel="noreferrer"
+                className="underline decoration-white/15 underline-offset-4 hover:decoration-amber-200/70"
+              >
+                Grace &amp; Glory International Church
+              </a>{" "}
+              — Atlanta • Monrovia • Asaba
+            </p>
 
             <p className="mt-6 max-w-xl text-sm leading-relaxed text-white/70 md:text-base">
               Clear teaching, deep conviction, and practical transformation. The goal is not inspiration alone.
@@ -162,7 +185,7 @@ export default function MinistryPage() {
               <div className="text-[11px] tracking-[0.28em] text-white/50">AUDIO MESSAGES</div>
               <h2 className="mt-4 text-2xl font-semibold">Listen and build your faith.</h2>
               <p className="mt-3 max-w-2xl text-sm text-white/70">
-                Click play to listen. 
+                Click play to listen. These audio files are served from{" "}
                 <span className="text-white/80">/public/audio/</span>.
               </p>
             </div>
@@ -183,7 +206,9 @@ export default function MinistryPage() {
                 key={m.title}
                 className="rounded-3xl border border-white/10 bg-neutral-950/40 p-7"
               >
-                <div className="text-sm font-semibold text-amber-200 tracking-wide">{m.title}</div>
+                <div className="text-sm font-semibold text-amber-200 tracking-wide">
+                  {m.title}
+                </div>
 
                 <audio controls preload="none" className="mt-4 w-full">
                   <source src={m.src} type="audio/mpeg" />

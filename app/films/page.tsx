@@ -13,25 +13,28 @@ type Film = {
 
 const films: Film[] = [
   {
-    title: "Film 1",
+    title: "Face to Face",
     poster: "/images/film-1.png",
-    trailer: "/videos/film-1.mp4",
-    synopsis:
-      "Short synopsis goes here. Replace with a tight, compelling summary in 2–4 sentences.",
+    trailer: "https://www.youtube.com/embed/UIHPzaqbJ3E",
+    synopsis: `An ambitious Uber driver picks up a passenger who is his perfect look alike, but they may have a lot more in common than just physical features.
+
+Michael soon realizes that he has come face to face with himself as the story and experiences of this strange passenger are nothing but a cautionary tale.`,
   },
   {
-    title: "Film 2",
+    title: "The Rising Sun",
     poster: "/images/film-2.png",
-    trailer: "/videos/film-2.mp4",
-    synopsis:
-      "Short synopsis goes here. Replace with a tight, compelling summary in 2–4 sentences.",
+    trailer: "https://www.youtube.com/embed/x-HCBaAvv1M",
+    synopsis: `The demand for palm oil exploration referred to as Red Gold in West Africa became very high in the 1700s.
+
+In a slave camp at the heart of the Bight of Biafra, a woman stands against British tyranny even in the face of death. Based on true events, after trying to negotiate unity between the Arochukwu and NRI kingdoms, an unexpected stranger offers help. Can she trust the son of the man she calls master in her quest to restore dignity in the land of The Rising Sun?`,
   },
   {
-    title: "Film 3",
+    title: "Finding Me",
     poster: "/images/film-3.png",
-    trailer: "/videos/film-3.mp4",
-    synopsis:
-      "Short synopsis goes here. Replace with a tight, compelling summary in 2–4 sentences.",
+    trailer: "",
+    synopsis: `In a relationship built on criticism and control, a plus-size woman slowly loses herself trying to become acceptable.
+
+Mocked for her body and shrinking herself for approval, she eventually confronts a hard truth: the problem was never her size. Finding Me is an emotional journey of self-worth, identity, and courage.`,
   },
 ];
 
@@ -47,7 +50,7 @@ export default function FilmsPage() {
   return (
     <main className="relative min-h-screen text-white overflow-hidden">
 
-      {/* Premium background */}
+      {/* Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-neutral-950 via-[#070b18] to-neutral-900" />
       <div className="absolute -top-40 -right-40 h-[500px] w-[500px] rounded-full bg-amber-300/5 blur-[120px]" />
       <div className="absolute bottom-0 left-0 h-[400px] w-[400px] rounded-full bg-blue-400/5 blur-[120px]" />
@@ -63,10 +66,6 @@ export default function FilmsPage() {
               stories crafted with meaning and excellence.
             </span>
           </h1>
-
-          <p className="mt-5 max-w-3xl text-sm leading-relaxed text-white/70 md:text-base">
-            Three featured films with posters, trailers, and synopsis.
-          </p>
 
           {/* Selector */}
           <div className="mt-10 flex flex-wrap gap-3">
@@ -101,7 +100,9 @@ export default function FilmsPage() {
                 </div>
               </div>
 
-              <div className="mt-4 text-xl font-semibold">{film.title}</div>
+              <div className="mt-4 text-xl font-semibold text-amber-200">
+                {film.title}
+              </div>
             </div>
 
             {/* Trailer + Synopsis */}
@@ -111,18 +112,25 @@ export default function FilmsPage() {
                 TRAILER
               </div>
 
-              <div className="mt-4 overflow-hidden rounded-2xl border border-white/10">
-                <video key={film.trailer} controls className="w-full">
-                  <source src={film.trailer} type="video/mp4" />
-                </video>
-              </div>
+              {film.trailer ? (
+                <iframe
+                  src={film.trailer}
+                  className="mt-4 w-full aspect-video rounded-2xl border border-white/10"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              ) : (
+                <div className="mt-4 rounded-2xl border border-white/10 p-6 text-sm text-white/60">
+                  Trailer coming soon.
+                </div>
+              )}
 
               <div className="mt-8 border-t border-white/10 pt-8">
                 <div className="text-[11px] tracking-[0.28em] text-white/50">
                   SYNOPSIS
                 </div>
 
-                <p className="mt-3 text-sm leading-relaxed text-white/70">
+                <p className="mt-3 whitespace-pre-line text-sm leading-relaxed text-white/70">
                   {film.synopsis}
                 </p>
               </div>

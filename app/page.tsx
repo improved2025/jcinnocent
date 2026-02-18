@@ -16,7 +16,7 @@ const lanes = [
   { label: "Books", href: "/books" },
   { label: "Films", href: "/films" },
   { label: "Workshops", href: "/workshops" },
-    { label: "Booking", href: "/booking" },
+  { label: "Booking", href: "/booking" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -39,13 +39,10 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
-
       {/* HERO STAGE */}
       <section className="mx-auto grid max-w-[1240px] gap-10 px-6 py-12 lg:grid-cols-[1fr_520px]">
-
         {/* CINEMATIC PHOTO STAGE */}
         <div className="relative min-h-[520px] overflow-hidden rounded-[36px] border border-white/10 bg-neutral-900">
-
           {portraits.map((src, i) => (
             <div
               key={src}
@@ -78,15 +75,12 @@ export default function Home() {
                 Pastor • AI Consultant • Author • Filmmaker
               </div>
             </div>
-            <div className="hidden sm:block text-xs text-white/55">
-              jcinnocent.com
-            </div>
+            <div className="hidden sm:block text-xs text-white/55">jcinnocent.com</div>
           </div>
         </div>
 
         {/* SIGNATURE PANEL */}
         <div className="rounded-[36px] border border-white/10 bg-neutral-950 p-10">
-
           <h1 className="text-4xl font-semibold leading-tight">
             Faith-led leadership.
             <span className="block text-white/65">Modern execution.</span>
@@ -156,7 +150,85 @@ export default function Home() {
               Watch on YouTube
             </a>
           </div>
+        </div>
+      </section>
 
+      {/* BIO SECTION */}
+      <section className="mx-auto max-w-[1240px] px-6 pb-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/5 p-10">
+          {/* subtle luxury glow */}
+          <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-200/10 blur-3xl" />
+
+          <div className="relative grid gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
+            <div>
+              <p className="text-[11px] tracking-[0.28em] text-white/55">BIO</p>
+
+              <h2 className="mt-4 text-2xl font-semibold md:text-3xl">
+                Dr Jeff C. Innocent
+                <span className="block text-white/65">
+                  authority, warmth, and excellence.
+                </span>
+              </h2>
+
+              <div className="mt-6 space-y-4 text-sm leading-relaxed text-white/70 md:text-base">
+                <p>
+                  Dr. Jeff C. Innocent is an entrepreneur, AI consultant, filmmaker, author,
+                  and pastor helping leaders, ministries, and businesses bring ideas to life
+                  through clarity, systems, and purpose.
+                </p>
+
+                <p>
+                  He serves as CEO of Improved Solutions LLC and Improved Films LLC, and Senior
+                  Pastor of Grace & Glory International Church with campuses in Atlanta, Monrovia,
+                  and Asaba. He is known for clear teaching, prophetic insight, and results-driven
+                  leadership.
+                </p>
+
+                <p>
+                  Holding a doctorate in Theology, Dr. Innocent equips people to grow spiritually
+                  while navigating real-world challenges, and trains organizations to adopt AI
+                  responsibly for productivity, systems building, and future-ready impact.
+                </p>
+              </div>
+            </div>
+
+            {/* bio highlights */}
+            <div className="rounded-[28px] border border-white/10 bg-neutral-950/50 p-8">
+              <div className="text-[11px] tracking-[0.28em] text-white/50">FOCUS</div>
+
+              <div className="mt-5 space-y-4">
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm font-semibold text-amber-200">Ministry</div>
+                  <div className="mt-1 text-xs text-white/65">Teaching, prophetic clarity, leadership.</div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm font-semibold text-amber-200">AI Consulting</div>
+                  <div className="mt-1 text-xs text-white/65">Responsible adoption, systems, execution.</div>
+                </div>
+
+                <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="text-sm font-semibold text-amber-200">Books + Films</div>
+                  <div className="mt-1 text-xs text-white/65">Storytelling, clarity, purpose-driven work.</div>
+                </div>
+              </div>
+
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Link
+                  href="/contact"
+                  className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 hover:border-white/25 hover:text-white transition"
+                >
+                  Contact
+                </Link>
+                <Link
+                  href="/booking"
+                  className="rounded-full bg-amber-200 px-5 py-2 text-sm font-medium text-neutral-950 hover:opacity-90 transition"
+                >
+                  Book Dr Jeff
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -167,8 +239,12 @@ export default function Home() {
       {/* slow zoom animation */}
       <style jsx global>{`
         @keyframes slowzoom {
-          0% { transform: scale(1.05); }
-          100% { transform: scale(1.12); }
+          0% {
+            transform: scale(1.05);
+          }
+          100% {
+            transform: scale(1.12);
+          }
         }
       `}</style>
     </main>
