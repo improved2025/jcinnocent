@@ -21,10 +21,11 @@ const lanes = [
 ];
 
 const platforms = [
+  { name: "GGI Church", href: "https://ggichurch.org" },
+  { name: "AI Simplified", href: "https://ai-simplified.us" },
   { name: "Manna", href: "https://getmanna.app" },
   { name: "Authored", href: "https://myauthored.com" },
   { name: "Improved Solutions", href: "https://improvedsolution.com" },
-  { name: "GGI Church", href: "https://ggichurch.org" },
 ];
 
 export default function Home() {
