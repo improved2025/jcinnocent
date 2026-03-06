@@ -61,14 +61,11 @@ export default function Home() {
             </div>
           ))}
 
-          {/* cinematic curtain */}
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-neutral-950/15 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/15 via-transparent to-neutral-950/35" />
 
-          {/* gold accent */}
           <div className="absolute left-10 top-10 h-[2px] w-24 bg-amber-200/80" />
 
-          {/* caption */}
           <div className="absolute bottom-8 left-10 right-10 flex items-end justify-between">
             <div>
               <div className="text-xl font-semibold">Dr Jeff C. Innocent</div>
@@ -76,7 +73,7 @@ export default function Home() {
                 Pastor • AI Consultant • Author • Filmmaker
               </div>
             </div>
-            <div className="hidden sm:block text-xs text-white/55">jcinnocent.com</div>
+            <div className="hidden text-xs text-white/55 sm:block">jcinnocent.com</div>
           </div>
         </div>
 
@@ -100,7 +97,7 @@ export default function Home() {
                 <Link
                   key={l.href}
                   href={l.href}
-                  className="group flex items-center justify-between rounded-2xl border border-white/10 px-5 py-3 hover:border-white/20 transition"
+                  className="group flex items-center justify-between rounded-2xl border border-white/10 px-5 py-3 transition hover:border-white/20"
                 >
                   <div className="flex items-center gap-4">
                     <div className="w-7 text-xs text-white/45">
@@ -118,17 +115,32 @@ export default function Home() {
           <div className="mt-10 border-t border-white/10 pt-8">
             <div className="text-[11px] tracking-[0.28em] text-white/50">PLATFORMS</div>
 
-            <div className="mt-4 grid gap-2">
-              {platforms.map((p) => (
+            <div className="mt-4 grid gap-3">
+              {platforms.map((p, i) => (
                 <a
                   key={p.name}
                   href={p.href}
                   target="_blank"
                   rel="noreferrer"
-                  className="flex items-center justify-between rounded-2xl border border-white/10 px-5 py-3 text-sm text-white/80 hover:border-white/20 hover:text-white transition"
+                  className="group relative overflow-hidden rounded-2xl border border-white/10 px-5 py-4 text-sm text-white/80 transition hover:border-amber-200/40 hover:text-white"
                 >
-                  <span>{p.name}</span>
-                  <span className="text-white/35">↗</span>
+                  <div className="pointer-events-none absolute inset-0 opacity-0 transition group-hover:opacity-100">
+                    <div className="absolute -left-20 -top-20 h-40 w-40 rounded-full bg-amber-200/10 blur-3xl" />
+                  </div>
+
+                  <div className="relative flex items-center justify-between">
+                    <div className="flex items-center gap-4">
+                      <div className="w-7 text-xs text-white/40">
+                        {String(i + 1).padStart(2, "0")}
+                      </div>
+
+                      <div className="font-medium">{p.name}</div>
+                    </div>
+
+                    <div className="text-white/35 transition group-hover:text-amber-200">
+                      ↗
+                    </div>
+                  </div>
                 </a>
               ))}
             </div>
@@ -137,7 +149,7 @@ export default function Home() {
           <div className="mt-10 flex flex-wrap gap-3">
             <Link
               href="/booking"
-              className="rounded-full bg-amber-200 px-6 py-3 text-sm font-medium text-neutral-950 hover:opacity-90 transition"
+              className="rounded-full bg-amber-200 px-6 py-3 text-sm font-medium text-neutral-950 transition hover:opacity-90"
             >
               Request Booking
             </Link>
@@ -146,7 +158,7 @@ export default function Home() {
               href="https://www.youtube.com/@jefinno"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/15 px-6 py-3 text-sm text-white/80 hover:border-white/25 hover:text-white transition"
+              className="rounded-full border border-white/15 px-6 py-3 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
             >
               Watch on YouTube
             </a>
@@ -154,10 +166,47 @@ export default function Home() {
         </div>
       </section>
 
+      {/* LATEST MESSAGE */}
+      <section className="mx-auto max-w-[1240px] px-6 pb-12">
+        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-black/40 p-8 backdrop-blur md:p-10">
+          <div className="pointer-events-none absolute -right-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-amber-200/10 blur-3xl" />
+
+          <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <div className="text-[11px] tracking-[0.28em] text-white/50">LATEST MESSAGE</div>
+              <h2 className="mt-3 text-2xl font-semibold text-amber-200 md:text-3xl">
+                Faith That Produces Results
+              </h2>
+              <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
+                A clear, faith-building message on conviction, endurance, and the kind of faith
+                that shows up in real life.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3">
+              <Link
+                href="/ministry"
+                className="rounded-full bg-amber-200 px-6 py-3 text-sm font-medium text-neutral-950 transition hover:opacity-90"
+              >
+                Listen
+              </Link>
+
+              <a
+                href="https://www.youtube.com/@jefinno"
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-full border border-white/15 px-6 py-3 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
+              >
+                Watch
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* BIO SECTION */}
       <section className="mx-auto max-w-[1240px] px-6 pb-12">
         <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/5 p-10">
-          {/* subtle luxury glow */}
           <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-200/10 blur-3xl" />
 
           <div className="relative grid gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
@@ -193,37 +242,42 @@ export default function Home() {
               </div>
             </div>
 
-            {/* bio highlights */}
             <div className="rounded-[28px] border border-white/10 bg-neutral-950/50 p-8">
               <div className="text-[11px] tracking-[0.28em] text-white/50">FOCUS</div>
 
               <div className="mt-5 space-y-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-sm font-semibold text-amber-200">Ministry</div>
-                  <div className="mt-1 text-xs text-white/65">Teaching, prophetic clarity, leadership.</div>
+                  <div className="mt-1 text-xs text-white/65">
+                    Teaching, prophetic clarity, leadership.
+                  </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-sm font-semibold text-amber-200">AI Consulting</div>
-                  <div className="mt-1 text-xs text-white/65">Responsible adoption, systems, execution.</div>
+                  <div className="mt-1 text-xs text-white/65">
+                    Responsible adoption, systems, execution.
+                  </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
                   <div className="text-sm font-semibold text-amber-200">Books + Films</div>
-                  <div className="mt-1 text-xs text-white/65">Storytelling, clarity, purpose-driven work.</div>
+                  <div className="mt-1 text-xs text-white/65">
+                    Storytelling, clarity, purpose-driven work.
+                  </div>
                 </div>
               </div>
 
               <div className="mt-7 flex flex-wrap gap-3">
                 <Link
                   href="/contact"
-                  className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 hover:border-white/25 hover:text-white transition"
+                  className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
                 >
                   Contact
                 </Link>
                 <Link
                   href="/booking"
-                  className="rounded-full bg-amber-200 px-5 py-2 text-sm font-medium text-neutral-950 hover:opacity-90 transition"
+                  className="rounded-full bg-amber-200 px-5 py-2 text-sm font-medium text-neutral-950 transition hover:opacity-90"
                 >
                   Book Dr Jeff
                 </Link>
@@ -237,7 +291,6 @@ export default function Home() {
         © {new Date().getFullYear()} Dr Jeff C. Innocent
       </footer>
 
-      {/* slow zoom animation */}
       <style jsx global>{`
         @keyframes slowzoom {
           0% {
