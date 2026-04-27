@@ -152,7 +152,7 @@ export default function UnspokenPainPage() {
             <input type="hidden" name="_subject" value="UNSPOKEN PAIN — Waitlist" />
             <input type="hidden" name="_captcha" value="false" />
             <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" value="/thank-you" />
+            <input type="hidden" name="_next" value="https://www.jcinnocent.com/thank-you"/>
 
             <input
               type="text"
