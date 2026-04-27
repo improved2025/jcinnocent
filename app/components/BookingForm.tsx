@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 
+const RECEIVER_EMAIL = "jefinno73@gmail.com";
+
 const bookingTypes = [
   "Ministry Invitation",
   "AI Consulting (General)",
@@ -127,14 +129,15 @@ export default function BookingForm() {
 
   function validate() {
     const e: string[] = [];
+
     if (!bookingType) e.push("Select a booking type.");
     if (!eventDate) e.push("Select an event date.");
     if (!preferredTime) e.push("Select a preferred time.");
     if (!contactMethod) e.push("Select a preferred contact method.");
     if (!fullName.trim()) e.push("Full name is required.");
-
-    // Keep it simple: at least one contact detail
-    if (!email.trim() && !phone.trim()) e.push("Provide an email or phone number.");
+    if (!email.trim() && !phone.trim()) {
+      e.push("Provide an email or phone number.");
+    }
 
     return e;
   }
@@ -147,26 +150,49 @@ export default function BookingForm() {
     setStatus("submitting");
 
     try {
-      const res = await fetch("/api/booking", {
+      const res = await fetch(`https://formsubmit.co/ajax/${RECEIVER_EMAIL}`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
         body: JSON.stringify({
+          _subject: "BOOKING — New Request from jcinnocent.com",
+          _template: "table",
+          _captcha: "false",
+
           bookingType,
           eventDate,
           preferredTime,
           contactMethod,
           fullName,
-          organization,
-          email,
-          phone,
-          notes,
+          organization: organization || "—",
+          email: email || "—",
+          phone: phone || "—",
+          notes: notes || "—",
           submittedAt: new Date().toISOString(),
+
+          message: `
+BOOKING REQUEST — jcinnocent.com
+
+Booking Type: ${bookingType}
+Event Date: ${eventDate}
+Preferred Time: ${preferredTime}
+Preferred Contact Method: ${contactMethod}
+
+Name: ${fullName}
+Organization: ${organization || "—"}
+Email: ${email || "—"}
+Phone: ${phone || "—"}
+
+Notes:
+${notes || "—"}
+          `,
         }),
       });
 
       if (!res.ok) throw new Error("Request failed");
 
-      // simple success → redirect
       window.location.href = "/thank-you";
     } catch {
       setStatus("error");
@@ -211,19 +237,36 @@ export default function BookingForm() {
 
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <Field label="Full name" hint="Required">
-          <Input value={fullName} onChange={setFullName} placeholder="Your full name" />
+          <Input
+            value={fullName}
+            onChange={setFullName}
+            placeholder="Your full name"
+          />
         </Field>
 
         <Field label="Organization" hint="Optional">
-          <Input value={organization} onChange={setOrganization} placeholder="Church / Company / Team" />
+          <Input
+            value={organization}
+            onChange={setOrganization}
+            placeholder="Church / Company / Team"
+          />
         </Field>
 
         <Field label="Email" hint="Email or phone required">
-          <Input value={email} onChange={setEmail} placeholder="you@email.com" type="email" />
+          <Input
+            value={email}
+            onChange={setEmail}
+            placeholder="you@email.com"
+            type="email"
+          />
         </Field>
 
         <Field label="Phone" hint="Email or phone required">
-          <Input value={phone} onChange={setPhone} placeholder="+1 (___) ___-____" />
+          <Input
+            value={phone}
+            onChange={setPhone}
+            placeholder="+1 (___) ___-____"
+          />
         </Field>
       </div>
 

@@ -1,6 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const DISPLAY_EMAIL = "contact@jcinnocent.com";
+const RECEIVER_EMAIL = "jefinno73@gmail.com";
+
 export default function UnspokenPainPage() {
   return (
     <main className="min-h-screen bg-[#07080c] text-white">
@@ -40,7 +43,7 @@ export default function UnspokenPainPage() {
               </Link>
 
               <Link
-                href="mailto:aisimplifiedus@gmail.com"
+                href={`mailto:${DISPLAY_EMAIL}?subject=Unspoken Pain Media Inquiry`}
                 className="rounded-full border border-white/20 px-8 py-4 text-center text-sm font-bold uppercase tracking-[0.18em] text-white transition hover:border-[#d7b36a] hover:text-[#d7b36a]"
               >
                 Media Inquiry
@@ -95,10 +98,12 @@ export default function UnspokenPainPage() {
             <p className="mb-4 text-sm font-semibold uppercase tracking-[0.28em] text-[#d7b36a]">
               Core Question
             </p>
+
             <h2 className="text-3xl font-bold leading-tight">
               What happens when a woman’s worst moment becomes her entire
               identity?
             </h2>
+
             <p className="mt-6 text-lg leading-8 text-white/70">
               Through the story of Job’s wife, <em>Unspoken Pain</em> gives
               voice to women who have been misunderstood, judged, or reduced to
@@ -110,12 +115,15 @@ export default function UnspokenPainPage() {
             <p className="mb-4 text-sm font-bold uppercase tracking-[0.28em]">
               Who Should Read It
             </p>
+
             <ul className="space-y-4 text-lg font-medium leading-7">
               <li>Women who have carried silent pain.</li>
               <li>Pastor’s wives and women in ministry.</li>
               <li>Mothers who have suffered quietly.</li>
               <li>Anyone judged before being understood.</li>
-              <li>Readers seeking a deeper look at overlooked women in Scripture.</li>
+              <li>
+                Readers seeking a deeper look at overlooked women in Scripture.
+              </li>
             </ul>
           </div>
         </div>
@@ -136,14 +144,39 @@ export default function UnspokenPainPage() {
             again, listen deeper, and see pain with compassion.
           </p>
 
-          <div className="mt-10">
-            <Link
-              href="mailto:aisimplifiedus@gmail.com?subject=Unspoken Pain Book Inquiry"
-              className="inline-flex rounded-full bg-[#d7b36a] px-10 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#f0cf83]"
+          <form
+            action={`https://formsubmit.co/${RECEIVER_EMAIL}`}
+            method="POST"
+            className="mx-auto mt-10 grid max-w-xl gap-4 sm:grid-cols-[1fr_1fr_auto]"
+          >
+            <input type="hidden" name="_subject" value="UNSPOKEN PAIN — Waitlist" />
+            <input type="hidden" name="_captcha" value="false" />
+            <input type="hidden" name="_template" value="table" />
+            <input type="hidden" name="_next" value="/thank-you" />
+
+            <input
+              type="text"
+              name="name"
+              required
+              placeholder="Your name"
+              className="rounded-full border border-white/10 bg-black/40 px-5 py-4 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#d7b36a]"
+            />
+
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="Your email"
+              className="rounded-full border border-white/10 bg-black/40 px-5 py-4 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#d7b36a]"
+            />
+
+            <button
+              type="submit"
+              className="rounded-full bg-[#d7b36a] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#f0cf83]"
             >
-              Join the Waitlist
-            </Link>
-          </div>
+              Join
+            </button>
+          </form>
         </div>
       </section>
 
@@ -160,10 +193,10 @@ export default function UnspokenPainPage() {
           </p>
 
           <Link
-            href="mailto:aisimplifiedus@gmail.com"
+            href={`mailto:${DISPLAY_EMAIL}?subject=Unspoken Pain Inquiry`}
             className="mt-3 inline-block text-lg font-semibold text-[#d7b36a] hover:text-[#f0cf83]"
           >
-            drjeff@jcinnocent.com
+            {DISPLAY_EMAIL}
           </Link>
         </div>
       </section>
