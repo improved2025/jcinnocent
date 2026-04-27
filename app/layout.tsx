@@ -19,6 +19,9 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Dr Jeff C. Innocent",
   description: "Pastor. AI Consultant. Author. Filmmaker.",
+  icons: {
+    icon: "/favicon-v2.ico",
+  },
 };
 
 export default function RootLayout({
