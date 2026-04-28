@@ -41,9 +41,9 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white">
       {/* HERO STAGE */}
-      <section className="mx-auto grid max-w-[1240px] gap-10 px-6 py-12 lg:grid-cols-[1fr_520px]">
+      <section className="mx-auto grid max-w-[1240px] gap-8 px-6 py-8 md:py-12 lg:grid-cols-[1fr_520px]">
         {/* CINEMATIC PHOTO STAGE */}
-        <div className="relative min-h-[520px] overflow-hidden rounded-[36px] border border-white/10 bg-neutral-900">
+        <div className="relative min-h-[420px] overflow-hidden rounded-[28px] border border-white/10 bg-neutral-900 sm:min-h-[520px] sm:rounded-[36px]">
           {portraits.map((src, i) => (
             <div
               key={src}
@@ -64,33 +64,39 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/70 via-neutral-950/15 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-r from-neutral-950/15 via-transparent to-neutral-950/35" />
 
-          <div className="absolute left-10 top-10 h-[2px] w-24 bg-amber-200/80" />
+          <div className="absolute left-8 top-8 h-[2px] w-20 bg-amber-200/80 sm:left-10 sm:top-10 sm:w-24" />
 
-          <div className="absolute bottom-8 left-10 right-10 flex items-end justify-between">
+          <div className="absolute bottom-8 left-8 right-8 flex items-end justify-between sm:left-10 sm:right-10">
             <div>
-              <div className="text-xl font-semibold">Dr Jeff C. Innocent</div>
-              <div className="mt-1 text-sm text-white/75">
+              <div className="text-lg font-semibold sm:text-xl">
+                Dr Jeff C. Innocent
+              </div>
+              <div className="mt-1 text-xs text-white/75 sm:text-sm">
                 Pastor • AI Consultant • Author • Filmmaker
               </div>
             </div>
-            <div className="hidden text-xs text-white/55 sm:block">jcinnocent.com</div>
+            <div className="hidden text-xs text-white/55 sm:block">
+              jcinnocent.com
+            </div>
           </div>
         </div>
 
         {/* SIGNATURE PANEL */}
-        <div className="rounded-[36px] border border-white/10 bg-neutral-950 p-10">
-          <h1 className="text-4xl font-semibold leading-tight">
+        <div className="rounded-[28px] border border-white/10 bg-neutral-950 p-6 sm:rounded-[36px] sm:p-10">
+          <h1 className="text-3xl font-semibold leading-tight sm:text-4xl">
             Faith-led leadership.
             <span className="block text-white/65">Modern execution.</span>
           </h1>
 
-          <p className="mt-6 text-sm leading-relaxed text-white/70">
+          <p className="mt-5 text-sm leading-relaxed text-white/70 sm:mt-6">
             Clarity. Conviction. Excellence that shows in real life.
           </p>
 
           {/* INDEX */}
-          <div className="mt-10">
-            <div className="text-[11px] tracking-[0.28em] text-white/50">INDEX</div>
+          <div className="mt-8 sm:mt-10">
+            <div className="text-[11px] tracking-[0.28em] text-white/50">
+              INDEX
+            </div>
 
             <div className="mt-4 grid gap-2">
               {lanes.map((l, i) => (
@@ -105,15 +111,19 @@ export default function Home() {
                     </div>
                     <div className="text-sm font-medium">{l.label}</div>
                   </div>
-                  <div className="text-white/35 group-hover:text-amber-200">↗</div>
+                  <div className="text-white/35 group-hover:text-amber-200">
+                    ↗
+                  </div>
                 </Link>
               ))}
             </div>
           </div>
 
           {/* PLATFORMS */}
-          <div className="mt-10 border-t border-white/10 pt-8">
-            <div className="text-[11px] tracking-[0.28em] text-white/50">PLATFORMS</div>
+          <div className="mt-8 border-t border-white/10 pt-8 sm:mt-10">
+            <div className="text-[11px] tracking-[0.28em] text-white/50">
+              PLATFORMS
+            </div>
 
             <div className="mt-4 grid gap-3">
               {platforms.map((p, i) => (
@@ -146,10 +156,10 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-8 flex flex-col gap-3 sm:mt-10 sm:flex-row sm:flex-wrap">
             <Link
               href="/booking"
-              className="rounded-full bg-amber-200 px-6 py-3 text-sm font-medium text-neutral-950 transition hover:opacity-90"
+              className="rounded-full bg-amber-200 px-6 py-3 text-center text-sm font-medium text-neutral-950 transition hover:opacity-90"
             >
               Request Booking
             </Link>
@@ -158,7 +168,7 @@ export default function Home() {
               href="https://www.youtube.com/@jefinno"
               target="_blank"
               rel="noreferrer"
-              className="rounded-full border border-white/15 px-6 py-3 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
+              className="rounded-full border border-white/15 px-6 py-3 text-center text-sm text-white/80 transition hover:border-white/25 hover:text-white"
             >
               Watch on YouTube
             </a>
@@ -166,27 +176,75 @@ export default function Home() {
         </div>
       </section>
 
+      {/* UNSPOKEN PAIN FEATURE */}
+      <section className="mx-auto max-w-[1240px] px-6 pb-10 sm:pb-12">
+        <div className="relative overflow-hidden rounded-[28px] border border-amber-200/20 bg-black/45 p-6 backdrop-blur sm:rounded-[36px] sm:p-10">
+          <div className="pointer-events-none absolute -left-20 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-amber-200/10 blur-3xl" />
+          <div className="pointer-events-none absolute -right-24 -top-24 h-64 w-64 rounded-full bg-white/5 blur-3xl" />
+
+          <div className="relative flex flex-col gap-7 md:flex-row md:items-center md:justify-between">
+            <div className="max-w-2xl">
+              <div className="inline-flex rounded-full border border-amber-200/30 bg-amber-200/10 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.28em] text-amber-200">
+                Featured Book
+              </div>
+
+              <h2 className="mt-4 text-4xl font-semibold leading-tight text-amber-200 sm:text-5xl md:text-4xl">
+                Unspoken Pain
+              </h2>
+
+              <p className="mt-2 text-base font-medium text-white/75">
+                The untold story of Job’s wife.
+              </p>
+
+              <p className="mt-4 text-sm leading-relaxed text-white/70 sm:text-base">
+                A bold reexamination of one of the most misunderstood women in
+                Scripture. This is not an excuse for pain. It is an invitation
+                to understand it.
+              </p>
+            </div>
+
+            <div className="flex w-full flex-col gap-3 sm:flex-row md:w-auto md:flex-col">
+              <Link
+                href="/unspoken-pain"
+                className="w-full rounded-full bg-amber-200 px-6 py-3 text-center text-sm font-medium text-neutral-950 transition hover:opacity-90 md:w-[190px]"
+              >
+                Explore Book
+              </Link>
+
+              <Link
+                href="/unspoken-pain#get-book"
+                className="w-full rounded-full border border-white/15 px-6 py-3 text-center text-sm text-white/80 transition hover:border-white/25 hover:text-white md:w-[190px]"
+              >
+                Join Waitlist
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* LATEST MESSAGE */}
-      <section className="mx-auto max-w-[1240px] px-6 pb-12">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-black/40 p-8 backdrop-blur md:p-10">
+      <section className="mx-auto max-w-[1240px] px-6 pb-10 sm:pb-12">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-black/40 p-6 backdrop-blur sm:rounded-[36px] sm:p-10">
           <div className="pointer-events-none absolute -right-16 top-1/2 h-48 w-48 -translate-y-1/2 rounded-full bg-amber-200/10 blur-3xl" />
 
           <div className="relative flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
             <div className="max-w-2xl">
-              <div className="text-[11px] tracking-[0.28em] text-white/50">LATEST MESSAGE</div>
+              <div className="text-[11px] tracking-[0.28em] text-white/50">
+                LATEST MESSAGE
+              </div>
               <h2 className="mt-3 text-2xl font-semibold text-amber-200 md:text-3xl">
                 Faith That Produces Results
               </h2>
               <p className="mt-3 text-sm leading-relaxed text-white/70 md:text-base">
-                A clear, faith-building message on conviction, endurance, and the kind of faith
-                that shows up in real life.
+                A clear, faith-building message on conviction, endurance, and
+                the kind of faith that shows up in real life.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-col gap-3 sm:flex-row">
               <Link
                 href="/ministry"
-                className="rounded-full bg-amber-200 px-6 py-3 text-sm font-medium text-neutral-950 transition hover:opacity-90"
+                className="rounded-full bg-amber-200 px-6 py-3 text-center text-sm font-medium text-neutral-950 transition hover:opacity-90"
               >
                 Listen
               </Link>
@@ -195,7 +253,7 @@ export default function Home() {
                 href="https://www.youtube.com/@jefinno"
                 target="_blank"
                 rel="noreferrer"
-                className="rounded-full border border-white/15 px-6 py-3 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
+                className="rounded-full border border-white/15 px-6 py-3 text-center text-sm text-white/80 transition hover:border-white/25 hover:text-white"
               >
                 Watch
               </a>
@@ -205,13 +263,15 @@ export default function Home() {
       </section>
 
       {/* BIO SECTION */}
-      <section className="mx-auto max-w-[1240px] px-6 pb-12">
-        <div className="relative overflow-hidden rounded-[36px] border border-white/10 bg-white/5 p-10">
+      <section className="mx-auto max-w-[1240px] px-6 pb-10 sm:pb-12">
+        <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-white/5 p-6 sm:rounded-[36px] sm:p-10">
           <div className="pointer-events-none absolute -top-24 left-1/2 h-64 w-64 -translate-x-1/2 rounded-full bg-amber-200/10 blur-3xl" />
 
-          <div className="relative grid gap-10 lg:grid-cols-[1fr_420px] lg:items-start">
+          <div className="relative grid gap-8 lg:grid-cols-[1fr_420px] lg:items-start">
             <div>
-              <p className="text-[11px] tracking-[0.28em] text-white/55">BIO</p>
+              <p className="text-[11px] tracking-[0.28em] text-white/55">
+                BIO
+              </p>
 
               <h2 className="mt-4 text-2xl font-semibold md:text-3xl">
                 Dr Jeff C. Innocent
@@ -222,62 +282,73 @@ export default function Home() {
 
               <div className="mt-6 space-y-4 text-sm leading-relaxed text-white/70 md:text-base">
                 <p>
-                  Dr. Jeff C. Innocent is an entrepreneur, AI consultant, filmmaker, author,
-                  and pastor helping leaders, ministries, and businesses bring ideas to life
-                  through clarity, systems, and purpose.
+                  Dr. Jeff C. Innocent is an entrepreneur, AI consultant,
+                  filmmaker, author, and pastor helping leaders, ministries, and
+                  businesses bring ideas to life through clarity, systems, and
+                  purpose.
                 </p>
 
                 <p>
-                  He serves as CEO of Improved Solutions LLC and Improved Films LLC, and Senior
-                  Pastor of Grace & Glory International Church with campuses in Atlanta, Monrovia,
-                  and Asaba. He is known for clear teaching, prophetic insight, and results-driven
+                  He serves as CEO of Improved Solutions LLC and Improved Films
+                  LLC, and Senior Pastor of Grace & Glory International Church
+                  with campuses in Atlanta, Monrovia, and Asaba. He is known for
+                  clear teaching, prophetic insight, and results-driven
                   leadership.
                 </p>
 
                 <p>
-                  Holding a doctorate in Theology, Dr. Innocent equips people to grow spiritually
-                  while navigating real-world challenges, and trains organizations to adopt AI
-                  responsibly for productivity, systems building, and future-ready impact.
+                  Holding a doctorate in Theology, Dr. Innocent equips people to
+                  grow spiritually while navigating real-world challenges, and
+                  trains organizations to adopt AI responsibly for productivity,
+                  systems building, and future-ready impact.
                 </p>
               </div>
             </div>
 
-            <div className="rounded-[28px] border border-white/10 bg-neutral-950/50 p-8">
-              <div className="text-[11px] tracking-[0.28em] text-white/50">FOCUS</div>
+            <div className="rounded-[24px] border border-white/10 bg-neutral-950/50 p-6 sm:rounded-[28px] sm:p-8">
+              <div className="text-[11px] tracking-[0.28em] text-white/50">
+                FOCUS
+              </div>
 
               <div className="mt-5 space-y-4">
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="text-sm font-semibold text-amber-200">Ministry</div>
+                  <div className="text-sm font-semibold text-amber-200">
+                    Ministry
+                  </div>
                   <div className="mt-1 text-xs text-white/65">
                     Teaching, prophetic clarity, leadership.
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="text-sm font-semibold text-amber-200">AI Consulting</div>
+                  <div className="text-sm font-semibold text-amber-200">
+                    AI Consulting
+                  </div>
                   <div className="mt-1 text-xs text-white/65">
                     Responsible adoption, systems, execution.
                   </div>
                 </div>
 
                 <div className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="text-sm font-semibold text-amber-200">Books + Films</div>
+                  <div className="text-sm font-semibold text-amber-200">
+                    Books + Films
+                  </div>
                   <div className="mt-1 text-xs text-white/65">
                     Storytelling, clarity, purpose-driven work.
                   </div>
                 </div>
               </div>
 
-              <div className="mt-7 flex flex-wrap gap-3">
+              <div className="mt-7 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
                 <Link
                   href="/contact"
-                  className="rounded-full border border-white/15 px-5 py-2 text-sm text-white/80 transition hover:border-white/25 hover:text-white"
+                  className="rounded-full border border-white/15 px-5 py-2 text-center text-sm text-white/80 transition hover:border-white/25 hover:text-white"
                 >
                   Contact
                 </Link>
                 <Link
                   href="/booking"
-                  className="rounded-full bg-amber-200 px-5 py-2 text-sm font-medium text-neutral-950 transition hover:opacity-90"
+                  className="rounded-full bg-amber-200 px-5 py-2 text-center text-sm font-medium text-neutral-950 transition hover:opacity-90"
                 >
                   Book Dr Jeff
                 </Link>
