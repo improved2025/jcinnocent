@@ -1,10 +1,78 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 
 const DISPLAY_EMAIL = "contact@jcinnocent.com";
 const RECEIVER_EMAIL = "jefinno73@gmail.com";
 
+const reviews = [
+  {
+    quote:
+      "Dr. Innocent presents Job's wife not merely as a woman who spoke badly in grief, but as a mother who lost ten children, a wife who remained beside her suffering husband, and a human being overwhelmed by unimaginable pain. Ultimately, Unspoken Pain is a call for deeper grace, greater empathy, and more responsible biblical reflection.",
+    name: "Pastor Bola Adepoju",
+    ministry: "Woman on Purpose Inc.",
+  },
+  {
+    quote:
+      "Dr. Innocent's argument is both biblically grounded and pastorally sensitive. Job's wife was not an ungodly or faithless woman. She reacted from trauma, not rebellion. What makes this study especially valuable is its call for theological compassion.",
+    name: "Apostle G. Thomas Dowie",
+    ministry: "Kingdom Restoration Ministries International",
+  },
+];
+
 export default function UnspokenPainPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState("");
+
+  async function submitWaitlist(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setError("");
+
+    if (!name.trim() || !email.trim()) {
+      setError("Please enter your name and email.");
+      return;
+    }
+
+    try {
+      setSubmitting(true);
+
+      const res = await fetch(`https://formsubmit.co/ajax/${RECEIVER_EMAIL}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          _subject: "UNSPOKEN PAIN — Waitlist",
+          _template: "table",
+          _captcha: "false",
+          name,
+          email,
+          message: `
+UNSPOKEN PAIN WAITLIST
+
+Name: ${name}
+Email: ${email}
+          `,
+        }),
+      });
+
+      if (!res.ok) {
+        throw new Error("Submission failed");
+      }
+
+      window.location.href = "/thank-you";
+    } catch {
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <main className="min-h-screen bg-[#07080c] text-white">
       <section className="relative overflow-hidden">
@@ -129,10 +197,40 @@ export default function UnspokenPainPage() {
         </div>
       </section>
 
+      <section className="border-y border-white/10 bg-white/[0.03]">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-10">
+          <p className="text-center text-sm font-semibold uppercase tracking-[0.32em] text-[#d7b36a]">
+            Early Reflections
+          </p>
+
+          <div className="mt-10 grid gap-6 md:grid-cols-2">
+            {reviews.map((review) => (
+              <div
+                key={review.name}
+                className="rounded-[2rem] border border-white/10 bg-black/35 p-8 backdrop-blur"
+              >
+                <p className="text-lg leading-8 text-white/75">
+                  “{review.quote}”
+                </p>
+
+                <div className="mt-8 border-t border-white/10 pt-5">
+                  <p className="font-semibold text-[#d7b36a]">
+                    {review.name}
+                  </p>
+                  <p className="mt-1 text-sm text-white/50">
+                    {review.ministry}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="get-book" className="bg-white/[0.03]">
         <div className="mx-auto max-w-4xl px-6 py-20 text-center lg:px-10">
           <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#d7b36a]">
-            Available Soon
+            Coming August 2026
           </p>
 
           <h2 className="mt-5 text-4xl font-bold tracking-tight md:text-5xl">
@@ -145,19 +243,15 @@ export default function UnspokenPainPage() {
           </p>
 
           <form
-            action={`https://formsubmit.co/${RECEIVER_EMAIL}`}
-            method="POST"
+            onSubmit={submitWaitlist}
             className="mx-auto mt-10 grid max-w-xl gap-4 sm:grid-cols-[1fr_1fr_auto]"
           >
-            <input type="hidden" name="_subject" value="UNSPOKEN PAIN — Waitlist" />
-            <input type="hidden" name="_captcha" value="false" />
-            <input type="hidden" name="_template" value="table" />
-            <input type="hidden" name="_next" value="https://www.jcinnocent.com/thank-you"/>
-
             <input
               type="text"
               name="name"
               required
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               placeholder="Your name"
               className="rounded-full border border-white/10 bg-black/40 px-5 py-4 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#d7b36a]"
             />
@@ -166,26 +260,34 @@ export default function UnspokenPainPage() {
               type="email"
               name="email"
               required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               placeholder="Your email"
               className="rounded-full border border-white/10 bg-black/40 px-5 py-4 text-sm text-white outline-none placeholder:text-white/40 focus:border-[#d7b36a]"
             />
 
             <button
               type="submit"
-              className="rounded-full bg-[#d7b36a] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#f0cf83]"
+              disabled={submitting}
+              className="rounded-full bg-[#d7b36a] px-8 py-4 text-sm font-bold uppercase tracking-[0.18em] text-black transition hover:bg-[#f0cf83] disabled:cursor-not-allowed disabled:opacity-60"
             >
-              Join
+              {submitting ? "Joining..." : "Join"}
             </button>
           </form>
+
+          {error ? (
+            <p className="mt-4 text-sm text-red-300">{error}</p>
+          ) : null}
         </div>
       </section>
 
       <section>
         <div className="mx-auto max-w-4xl px-6 py-16 text-center lg:px-10">
           <p className="text-lg leading-8 text-white/65">
-            Jeff C. Innocent is a pastor, author, and teacher whose writing
-            brings biblical stories into honest conversation with real human
-            pain.
+            Dr. Jeff C. Innocent is a pastor, author, and filmmaker based in
+            Atlanta, Georgia. He has carried this burden for eight years and
+            built a scripture-based case for why the church got Job&apos;s wife
+            wrong. <em>Unspoken Pain</em> is the book that burden produced.
           </p>
 
           <p className="mt-8 text-sm uppercase tracking-[0.22em] text-white/45">
