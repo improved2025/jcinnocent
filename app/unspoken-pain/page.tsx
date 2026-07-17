@@ -448,6 +448,61 @@ Request: Two to three free sample chapters
         </div>
       </section>
 
+      {/* OFFICIAL BOOK TRAILER */}
+      <section className="border-b border-white/10 bg-[#050609]">
+        <div className="mx-auto max-w-6xl px-6 py-20 lg:px-10">
+          <div className="mx-auto max-w-3xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-[0.32em] text-[#d7b36a]">
+              Official Book Trailer
+            </p>
+
+            <h2 className="mt-5 text-3xl font-bold tracking-tight md:text-5xl">
+              One painful sentence should not define an entire life
+            </h2>
+
+            <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-white/60 md:text-lg">
+              Watch the official trailer for{" "}
+              <em className="text-white/80">Unspoken Pain</em> and discover the
+              untold story behind one of Scripture&apos;s most misunderstood
+              women.
+            </p>
+          </div>
+
+          <div className="relative mx-auto mt-12 max-w-5xl">
+            <div className="pointer-events-none absolute -inset-6 rounded-[2.5rem] bg-[#d7b36a]/10 blur-3xl" />
+
+            <div className="relative overflow-hidden rounded-[2rem] border border-[#d7b36a]/25 bg-black p-2 shadow-2xl">
+              <video
+                className="aspect-video h-auto w-full rounded-[1.45rem] bg-black object-contain"
+                controls
+                preload="metadata"
+                playsInline
+                aria-label="Official Unspoken Pain book trailer"
+              >
+                <source src="/unspoken-pain.mp4" type="video/mp4" />
+                Your browser does not support the video element.
+              </video>
+            </div>
+          </div>
+
+          <div className="mt-9 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <Link
+              href="#buy"
+              className="rounded-full bg-[#d7b36a] px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-black transition hover:bg-[#f0cf83]"
+            >
+              Get the Book
+            </Link>
+
+            <Link
+              href="#free-chapters"
+              className="rounded-full border border-white/20 px-8 py-4 text-sm font-bold uppercase tracking-[0.14em] text-white transition hover:border-[#d7b36a] hover:text-[#d7b36a]"
+            >
+              Read Free Chapters
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* BOOK DESCRIPTION */}
       <section>
         <div className="mx-auto max-w-4xl px-6 py-20 lg:px-10">
